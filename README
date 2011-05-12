@@ -9,3 +9,7 @@ Works in combination with my fork of emacs-starter-kit
 Thanks to everyone who created awesome open source projects for emacs!
 
 TODOs: Create a branch that works on Windows. Right now my windows emacs configuration is a small subset of this.
+
+## LICENSE
+
+MIT http://en.wikipedia.org/wiki/MIT_License
