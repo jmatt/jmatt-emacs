@@ -1,0 +1,139 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Library Paths
+;; Note: I like to keep every emacs library underneath
+;; ~/.emacs.d and I shun loading them from the system
+;; paths. This makes it easier to use this config on
+;; multiple systems.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(add-to-list 'load-path "~/.emacs.d")
+;;Add all top-level subdirectories of .emacs.d to the load path
+(progn (cd "~/.emacs.d")
+       (normal-top-level-add-subdirs-to-load-path))
+;;Add all top-level subdirectories of .emacs.d/vendor to the load path
+(progn (cd "~/.emacs.d/vendor")
+       (normal-top-level-add-subdirs-to-load-path))
+(progn (cd "~/.emacs.d/vendor/emacs-starter-kit")
+       (normal-top-level-add-subdirs-to-load-path))
+(add-to-list 'load-path "/usr/local/share/emacs/site-lisp")
+
+(setq dotfiles-dir (file-name-directory
+                    (or (buffer-file-name) load-file-name)))
+
+;; Create variables to store the path to this dotfile dir's lib etc and tmp directories
+(setq vendor-dir (concat dotfiles-dir "vendor/"))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; color-theme
+;; Load color-theme autoloads from my repository. I'm using my own
+;; repository because otherwise each version of emacs has it's own
+;; squirelly version of color-theme
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'color-theme-autoloads "color-theme-autoloads")
+(require 'color-theme-jmatt)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Aquamacs settings
+;; Note: I like to keep every emacs library underneath
+;; ~/.emacs.d and I shun loading them from the system
+;; paths. This makes it easier to use this config on
+;; multiple systems.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'emacs-starter-kit)
+(custom-set-variables '(aquamacs-styles-mode t))
+;(setq mac-tool-bar-display-mode 'icons) ;for newbies
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; color-theme
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;My old color-theme ... color-theme-dark-bliss!
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Org-mode
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;replaced by aquaemacs-starter-kit goodies.
+;;(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+;;(define-key global-map "\C-cl" 'org-store-link)
+;;(define-key global-map "\C-ca" 'org-agenda)
+;;(setq org-log-done t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 
+;; Development         
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'dev)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Misc Happiness
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(if window-system
+    (windmove-default-keybindings 'meta)
+  (progn
+    (global-set-key [(alt left)]  'windmove-left)
+    (global-set-key [(alt up)]    'windmove-up)
+    (global-set-key [(alt right)] 'windmove-right)
+    (global-set-key [(alt down)]  'windmove-down)))
+
+;smooth-scrolling
+(require 'smooth-scrolling)
+
+;;ac
+(require 'auto-complete)
+(require 'auto-complete-config)
+(ac-config-default)
+(ac-flyspell-workaround)
+(add-to-list 'ac-dictionary-directories (concat vendor-dir "auto-complete/dict"))
+(global-auto-complete-mode t)
+(setq ac-auto-show-menu t)
+(setq ac-dwim t)
+(setq ac-use-menu-map t)
+(setq ac-quick-help-delay 1)
+(setq ac-quick-help-height 60)
+
+(set-default 'ac-sources
+             '(ac-source-dictionary
+               ac-source-words-in-buffer
+               ac-source-words-in-same-mode-buffers
+               ac-source-words-in-all-buffer))
+
+(dolist (mode '(magit-log-edit-mode log-edit-mode org-mode text-mode haml-mode
+                sass-mode yaml-mode csv-mode espresso-mode haskell-mode
+                html-mode nxml-mode sh-mode smarty-mode clojure-mode
+                lisp-mode textile-mode markdown-mode tuareg-mode))
+  (add-to-list 'ac-modes mode))
+
+
+;;ac-slime auto-complete plugin
+(require 'ac-slime)
+(add-hook 'slime-mode-hook 'set-up-slime-ac)
+(add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
+
+
+;;Key triggers
+(ac-set-trigger-key "TAB")
+(define-key ac-completing-map (kbd "C-M-n") 'ac-next)
+(define-key ac-completing-map (kbd "C-M-p") 'ac-previous)
+(define-key ac-completing-map "\t" 'ac-complete)
+(define-key ac-completing-map "\r" nil)
+;;(add-to-list 'ac-dictionary-directories "/Users/jmatt/.emacs.d/vendor/ac-dict")
+;;(ac-config-default)
+
+;; smex
+(require 'smex)
+(smex-initialize)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+;; This is your old M-x.
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+
+;; appearance
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+
+;; undo awesomeness
+(require 'undo-tree)
+(global-undo-tree-mode)
+

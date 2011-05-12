@@ -1,0 +1,1 @@
+/Users/jmatt/dev/build/solarized/emacs-colors-solarized/color-theme-solarized.el
