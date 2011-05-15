@@ -1,0 +1,27 @@
+[submodule "vendor/slime"]
+	path = vendor/slime
+	url = git://github.com/technomancy/slime.git
+[submodule "vendor/emacs-starter-kit"]
+	path = vendor/emacs-starter-kit
+	url = git@github.com:jmatt/emacs-starter-kit.git
+[submodule "color-themes/zenburn-emacs"]
+	path = color-themes/zenburn-emacs
+	url = git@github.com:jmatt/zenburn-emacs.git
+[submodule "vendor/clojure-mode"]
+	path = vendor/clojure-mode
+	url = git://github.com/technomancy/clojure-mode.git
+[submodule "vendor/markdown-mode"]
+	path = vendor/markdown-mode
+	url = git://github.com/defunkt/markdown-mode.git
+[submodule "vendor/textmate"]
+	path = vendor/textmate
+	url = git://github.com/defunkt/textmate.el.git
+[submodule "vendor/undo-tree"]
+	path = vendor/undo-tree
+	url = http://www.dr-qubit.org/git/undo-tree.git
+[submodule "vendor/auto-complete"]
+	path = vendor/auto-complete
+	url = https://github.com/m2ym/auto-complete.git
+[submodule "vendor/ac-slime"]
+	path = vendor/ac-slime
+	url = https://github.com/purcell/ac-slime.git
