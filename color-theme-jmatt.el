@@ -1,7 +1,7 @@
 ;;JMatt's Color Theme
-(require 'color-theme-autoloads "color-theme-autoloads")
+;;(require 'color-theme-autoloads "color-theme-autoloads")
 (require 'color-theme)
-(color-theme-initialize)
+;;(color-theme-initialize)
 (setq color-theme-is-global t)
 
 (load-library "color-theme")
@@ -12,12 +12,16 @@
     (progn (require 'color-theme-dark-bliss)
            (require 'color-theme-hober2)
            (require 'zenburn)
+           ;;(color-theme-zenburn)
            (require 'color-theme-solarized)
            (color-theme-solarized-dark))
   (progn
-    (require 'zenburn)
-    (color-theme-zenburn)
-    (require 'color-theme-solarized)
-    (color-theme-solarized-dark)))
+;    (require 'zenburn)
+    ))
+;;    (color-theme-zenburn)
+;;    (require 'color-theme-solarized)
+;;    (color-theme-solarized-dark)
+;;    (color-theme-twilight)
+;;    (color-theme-standard)))
 
 (provide 'color-theme-jmatt)

@@ -1,8 +1,11 @@
-Created by J. Matt Peterson on and around May 12, 2011
 
-My emacs configuration for aquamacs / clojure / ruby / python on mac osx 10.6
+## WINDOWS BRANCH
 
-Also works with brew installed emacs 24.1.
+Created by J. Matt Peterson on and around May 15, 2011.
+
+My emacs configuration for Windows / clojure / ruby / python on Windows 7 with Emacs W32 Patched + GNU Emacs 23.1.50.1 
+
+Also works with emacs 24.1.
 
 Works in combination with my fork of emacs-starter-kit
 
