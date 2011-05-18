@@ -5,14 +5,53 @@ Created by J. Matt Peterson on and around May 15, 2011.
 
 My emacs configuration for Windows / clojure / ruby / python on Windows 7 with Emacs W32 Patched + GNU Emacs 23.1.50.1 
 
-Also works with emacs 24.1.
+Also should work with emacs 24.1.
 
-Works in combination with my fork of emacs-starter-kit
+Works in combination with my fork of emacs-starter-kit.
+
+
+## Installation
+
+1. Install Emacs W32 Patched GNU Emacs 23.1.50.1 (or similar compatible version)
+
+2. Verify that finder-inf.el contains (provide 'finder-inf)
+
+--- /c/Program Files (x86)/Emacs/emacs/lisp/finder-inf.el~      Wed Nov  4 00:20:54 2009
++++ /c/Program Files (x86)/Emacs/emacs/lisp/finder-inf.el       Sun May 15 16:48:59 2011
+@@ -3676,6 +3676,9 @@
+         "Generated parser support file"
+         nil)
+     ))
++
++(provide 'finder-inf)
++
+ ♀
+ ;; Local Variables:
+ ;; version-control: never
+
+
+3. git clone jmatt-emacs windows branch to $HOME/.emacs.d directory.
+
+4. Copy dotemacs to your .emacs file (may vary but $HOME/.emacs works for me).
+
+5. Done! 
+
+
+## Thanks
 
 Thanks to everyone who created awesome open source projects for emacs!
 
-TODOs: Create a branch that works on Windows. Right now my windows emacs configuration is a small subset of this.
+
+## TODOs
+
+TODOs: Create a stable windows branch.
+
 
 ## LICENSE
 
-MIT http://en.wikipedia.org/wiki/MIT_License
+LGPL / PUBLIC DOMAIN
+
+http://en.wikipedia.org/wiki/LGPL
+
+http://en.wikipedia.org/wiki/Public_domain
+
