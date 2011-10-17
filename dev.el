@@ -23,6 +23,7 @@
 (add-hook 'slime-repl-mode-hook 'clojure-mode-font-lock-setup)
 (eval-after-load 'find-file-in-project
   '(add-to-list 'ffip-patterns "*.clj"))
+(setq slime-net-coding-system 'utf-8-unix)
 
 
 ;; textmate-mode

@@ -110,6 +110,12 @@
 (add-hook 'slime-mode-hook 'set-up-slime-ac)
 (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
 
+;; Remove ^M when using *shell*
+;; Add ansi-color to *shell* and maybe comint
+(autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+(add-hook 'comint-output-filter-functions
+          'comint-strip-ctrl-m)
 
 ;;Key triggers
 (ac-set-trigger-key "TAB")
@@ -137,3 +143,6 @@
 (require 'undo-tree)
 (global-undo-tree-mode)
 
+;; scpaste
+(setq scpaste-http-destination "http://jmatt.org/scp"
+      scpaste-scp-destination "jmatt@r2d2#6400:/usr/share/jetty/webapps/jmatt/scp")
