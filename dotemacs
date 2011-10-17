@@ -1,3 +1,4 @@
+(server-start)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Library Paths
 ;; Note: I like to keep every emacs library underneath
@@ -14,7 +15,7 @@
        (normal-top-level-add-subdirs-to-load-path))
 (progn (cd "~/.emacs.d/vendor/emacs-starter-kit")
        (normal-top-level-add-subdirs-to-load-path))
-(add-to-list 'load-path "/usr/local/share/emacs/site-lisp")
+;(add-to-list 'load-path "/usr/local/share/emacs/site-lisp")
 
 (setq dotfiles-dir (file-name-directory
                     (or (buffer-file-name) load-file-name)))
@@ -28,7 +29,7 @@
 ;; repository because otherwise each version of emacs has it's own
 ;; squirelly version of color-theme
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(require 'color-theme-autoloads "color-theme-autoloads")
+;(require 'color-theme-autoloads "color-theme-autoloads")
 (require 'color-theme-jmatt)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -39,7 +40,7 @@
 ;; multiple systems.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'emacs-starter-kit)
-(custom-set-variables '(aquamacs-styles-mode t))
+;(custom-set-variables '(aquamacs-styles-mode t))
 ;(setq mac-tool-bar-display-mode 'icons) ;for newbies
 
 
@@ -63,7 +64,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 
 ;; Development         
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(require 'dev)
+;(require 'dev)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Misc Happiness
@@ -143,6 +144,96 @@
 (require 'undo-tree)
 (global-undo-tree-mode)
 
+<<<<<<< HEAD
 ;; scpaste
 (setq scpaste-http-destination "http://jmatt.org/scp"
       scpaste-scp-destination "jmatt@r2d2#6400:/usr/share/jetty/webapps/jmatt/scp")
+=======
+;; Set transparency of emacs
+(defun transparency (value)
+  "Sets the transparency of the frame window. 0=transparent/100=opaque"
+  (interactive "nTransparency Value 0 - 100 opaque:")
+  (set-frame-parameter (selected-frame) 'alpha value))
+
+;; Windows only configuration
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(appmenu-mode t)
+ ;;'(cua-mode t nil (cua-base))
+ '(emacsw32-max-frames f)
+ '(emacsw32-style-frame-title t)
+ '(hfyview-quick-print-in-files-menu t)
+ '(menuacc-mode t)
+ '(noprint-hide-print-in-menus t)
+ '(noprint-hide-ps-print-in-menus t)
+ '(ourcomments-ido-ctrl-tab t)
+ ;;'(rebind-keys-mode t)
+ '(recentf-mode t)
+ '(sex-mode t)
+ '(tabkey2-mode t)
+ ;;'(w32-meta-style (quote w32-lr))
+ '(setq w32-enable-synthesized-fonts t)
+ '(w32shell-shell (quote cmd)))
+
+(set-face-attribute 'default nil :font "-outline-Consolas-normal-normal-normal-mono-14-*-*-*-c-*-iso8859-1")
+(set-face-font 'italic "-outline-Consolas-normal-italic-normal-mono-*-*-*-*-c-*-iso8859-1")
+(set-face-font 'bold  "-outline-Consolas-bold-normal-normal-mono-*-*-*-*-c-*-iso8859-1" )
+(set-face-font 'bold-italic "-outline-Consolas-bold-italic-normal-mono-*-*-*-*-c-*-iso8859-1")
+
+
+(add-to-list 'load-path "~/.emacs.d/vendor/gist.el")
+(require 'gist)
+
+(global-set-key (kbd "C-M-a") 'move-beginning-of-line)
+
+(custom-set-variables
+    '(ispell-dictionary "american")
+    '(ispell-program-name "aspell.exe"))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> 0c8174aefeb862220a52f817998f13c99bdcd465
