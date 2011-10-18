@@ -45,18 +45,22 @@
 ;(require 'color-theme-autoloads "color-theme-autoloads")
 (cond
  ((and (window-system) (string-match "aquamacs" (emacs-version)))
-  (message "Emacs is using Aquamacs color-theme.")
+  (message "Emacs is using Aquamacs custom color-theme.")
   (require 'color-theme-jmatt))
- (t
+ ((string-match " 24." (emacs-version))
   (progn
-    (message "Emacs is using terminal colors")
+    (message "Emacs 24 is using custom terminal theme.")
+    (load-theme 'wombat)))
+ (t ;; Default Case
+  (progn
+    (message "Emacs <24 is using custom terminal color-theme")
     (require 'color-theme)
     (color-theme-initialize)
     (color-theme-comidia))))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; color-theme
+;ß; color-theme
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;My old color-theme ... color-theme-dark-bliss!
@@ -195,15 +199,13 @@
     (set-face-font 'italic "-outline-Menlo-normal-italic-normal-mono-*-*-*-*-c-*-iso8859-1")
     (set-face-font 'bold  "-outline-Menlo-bold-normal-normal-mono-*-*-*-*-c-*-iso8859-1" )
     (set-face-font 'bold-italic "-outline-Menlo-bold-italic-normal-mono-*-*-*-*-c-*-iso8859-1")))
- (t ;; Default Case.
+ ((window-system) ;; Default Case.
   (progn
     (set-face-attribute 'default nil :font "-outline-Consolas-normal-normal-normal-mono-15-*-*-*-c-*-iso8859-1")
     (set-face-font 'italic "-outline-Consolas-normal-italic-normal-mono-*-*-*-*-c-*-iso8859-1")
     (set-face-font 'bold  "-outline-Consolas-bold-normal-normal-mono-*-*-*-*-c-*-iso8859-1" )
     (set-face-font 'bold-italic "-outline-Consolas-bold-italic-normal-mono-*-*-*-*-c-*-iso8859-1")))
  )
-
-
 
 (add-to-list 'load-path "~/.emacs.d/vendor/gist/gist.el")
 (require 'gist)
