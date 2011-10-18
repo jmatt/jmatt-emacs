@@ -1,4 +1,5 @@
-(server-start)
+(load "server")
+(unless (server-running-p) (server-start))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Library Paths
 ;; Note: I like to keep every emacs library underneath
