@@ -32,6 +32,10 @@
 ;; paths. This makes it easier to use this config on
 ;; multiple systems.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(cond
+ ((and (window-system) (string-match "aquamacs" (emacs-version)))
+  (message "Emacs is using Aquamacs custom color-theme.")
+  (require 'color-theme-jmatt)))
 (require 'emacs-starter-kit)
 ;(custom-set-variables '(aquamacs-styles-mode t))
 ;(setq mac-tool-bar-display-mode 'icons) ;for newbies
