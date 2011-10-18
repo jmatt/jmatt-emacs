@@ -23,14 +23,6 @@
 ;; Create variables to store the path to this dotfile dir's lib etc and tmp directories
 (setq vendor-dir (concat dotfiles-dir "vendor/"))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; color-theme
-;; Load color-theme autoloads from my repository. I'm using my own
-;; repository because otherwise each version of emacs has it's own
-;; squirelly version of color-theme
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;(require 'color-theme-autoloads "color-theme-autoloads")
-(require 'color-theme-jmatt)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Aquamacs settings
@@ -42,6 +34,25 @@
 (require 'emacs-starter-kit)
 ;(custom-set-variables '(aquamacs-styles-mode t))
 ;(setq mac-tool-bar-display-mode 'icons) ;for newbies
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; color-theme
+;; Load color-theme autoloads from my repository. I'm using my own
+;; repository because otherwise each version of emacs has it's own
+;; squirelly version of color-theme
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;(require 'color-theme-autoloads "color-theme-autoloads")
+(cond
+ ((and (window-system) (string-match "aquamacs" (emacs-version)))
+  (message "Emacs is using Aquamacs color-theme.")
+  (require 'color-theme-jmatt))
+ (t
+  (progn
+    (message "Emacs is using terminal colors")
+    (require 'color-theme)
+    (color-theme-initialize)
+    (color-theme-comidia))))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -113,8 +124,8 @@
 
 ;; Remove ^M when using *shell*
 ;; Add ansi-color to *shell* and maybe comint
-(autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
-(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+;(autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
+;(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 (add-hook 'comint-output-filter-functions
           'comint-strip-ctrl-m)
 
@@ -144,11 +155,10 @@
 (require 'undo-tree)
 (global-undo-tree-mode)
 
-<<<<<<< HEAD
 ;; scpaste
 (setq scpaste-http-destination "http://jmatt.org/scp"
       scpaste-scp-destination "jmatt@r2d2#6400:/usr/share/jetty/webapps/jmatt/scp")
-=======
+
 ;; Set transparency of emacs
 (defun transparency (value)
   "Sets the transparency of the frame window. 0=transparent/100=opaque"
@@ -178,10 +188,21 @@
  ;;'(setq w32-enable-synthesized-fonts t)
  ;;'(w32shell-shell (quote cmd)))
 
-(set-face-attribute 'default nil :font "-outline-Consolas-normal-normal-normal-mono-15-*-*-*-c-*-iso8859-1")
-(set-face-font 'italic "-outline-Consolas-normal-italic-normal-mono-*-*-*-*-c-*-iso8859-1")
-(set-face-font 'bold  "-outline-Consolas-bold-normal-normal-mono-*-*-*-*-c-*-iso8859-1" )
-(set-face-font 'bold-italic "-outline-Consolas-bold-italic-normal-mono-*-*-*-*-c-*-iso8859-1")
+(cond
+ ((and (window-system) (string-match "aquamacs" (emacs-version)))
+  (progn
+    (set-face-attribute 'default nil :font "-outline-Menlo-normal-normal-normal-mono-15-*-*-*-c-*-iso8859-1")
+    (set-face-font 'italic "-outline-Menlo-normal-italic-normal-mono-*-*-*-*-c-*-iso8859-1")
+    (set-face-font 'bold  "-outline-Menlo-bold-normal-normal-mono-*-*-*-*-c-*-iso8859-1" )
+    (set-face-font 'bold-italic "-outline-Menlo-bold-italic-normal-mono-*-*-*-*-c-*-iso8859-1")))
+ (t ;; Default Case.
+  (progn
+    (set-face-attribute 'default nil :font "-outline-Consolas-normal-normal-normal-mono-15-*-*-*-c-*-iso8859-1")
+    (set-face-font 'italic "-outline-Consolas-normal-italic-normal-mono-*-*-*-*-c-*-iso8859-1")
+    (set-face-font 'bold  "-outline-Consolas-bold-normal-normal-mono-*-*-*-*-c-*-iso8859-1" )
+    (set-face-font 'bold-italic "-outline-Consolas-bold-italic-normal-mono-*-*-*-*-c-*-iso8859-1")))
+ )
+
 
 
 (add-to-list 'load-path "~/.emacs.d/vendor/gist/gist.el")
@@ -193,47 +214,3 @@
     '(ispell-dictionary "american")
     '(ispell-program-name "aspell.exe"))
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> 0c8174aefeb862220a52f817998f13c99bdcd465
