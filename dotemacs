@@ -222,3 +222,4 @@
     '(ispell-dictionary "american")
     '(ispell-program-name "aspell.exe"))
 
+(cd "~")
