@@ -1,14 +1,14 @@
-Created by J. Matt Peterson on and around May 12, 2011
+Created by J. Matt Peterson on and around October 25, 2011
 
-My emacs configuration for aquamacs / clojure / ruby / python on mac osx 10.6
+My emacs configuration for aquamacs / clojure / python / ruby on mac osx 10.7
 
-Also works with brew installed emacs 24.1.
+Also works with brew installed emacs 24.0.90.1
 
 Works in combination with my fork of emacs-starter-kit
 
 Thanks to everyone who created awesome open source projects for emacs!
 
-TODOs: Create a branch that works on Windows. Right now my windows emacs configuration is a small subset of this.
+TODOs: A branch exists on Windows but it is out of sync with master. Right now the windows branch only supports a subset of master's functionality.
 
 ## LICENSE
 

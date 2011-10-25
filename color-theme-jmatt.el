@@ -16,11 +16,12 @@
            (color-theme-zenburn)
            (require 'color-theme-solarized)
            ;;(color-theme-solarized-dark)
-	   )
-  (progn
-    (require 'color-theme-solarized)
-    (color-theme-solarized-dark)
-    (require 'zenburn)
-    (color-theme-zenburn)))
+	   ))
+;; (progn
+;;    (require 'color-theme-solarized)
+;;    (color-theme-solarized-dark)
+;;    (require 'zenburn)
+;;    (color-theme-zenburn)
+  
 
 (provide 'color-theme-jmatt)

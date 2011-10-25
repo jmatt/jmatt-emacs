@@ -123,14 +123,17 @@
 (dolist (mode '(magit-log-edit-mode log-edit-mode org-mode text-mode haml-mode
                 sass-mode yaml-mode csv-mode espresso-mode haskell-mode
                 html-mode nxml-mode sh-mode smarty-mode clojure-mode
-                lisp-mode textile-mode markdown-mode tuareg-mode))
+                js2-mode lisp-mode textile-mode markdown-mode tuareg-mode))
   (add-to-list 'ac-modes mode))
 
 
 ;;ac-slime auto-complete plugin
+;; ac-slime is now a package install
 (require 'ac-slime)
 (add-hook 'slime-mode-hook 'set-up-slime-ac)
 (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
+(eval-after-load "auto-complete"
+       '(add-to-list 'ac-modes 'slime-repl-mode))
 
 ;; Remove ^M when using *shell*
 ;; Add ansi-color to *shell* and maybe comint
