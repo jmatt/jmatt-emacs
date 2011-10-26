@@ -36,7 +36,16 @@
  ((and (window-system) (string-match "aquamacs" (emacs-version)))
   (message "Emacs is using Aquamacs custom color-theme.")
   (require 'color-theme-jmatt)))
+(setq slime-use-autodoc-mode nil)
 (require 'emacs-starter-kit)
+
+;;(require 'slime)
+;;(require 'slime-repl)
+;;(slime-repl-init)
+;;(require 'slime-fuzzy)
+;;(slime-fuzzy-init)
+;;(require 'slime)
+
 ;(custom-set-variables '(aquamacs-styles-mode t))
 ;(setq mac-tool-bar-display-mode 'icons) ;for newbies
 
@@ -47,7 +56,6 @@
 ;; repository because otherwise each version of emacs has it's own
 ;; squirelly version of color-theme
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;(require 'color-theme-autoloads "color-theme-autoloads")
 (cond
  ((and (window-system) (string-match "aquamacs" (emacs-version)))
   (message "Emacs is using Aquamacs custom color-theme.")
@@ -84,7 +92,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 
 ;; Development         
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(require 'dev)
+;;(require 'dev)
 (setenv "PATH" "/bin:/Users/jmatt/bin:/usr/bin")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -130,10 +138,9 @@
 ;;ac-slime auto-complete plugin
 ;; ac-slime is now a package install
 (require 'ac-slime)
-(add-hook 'slime-mode-hook 'set-up-slime-ac)
 (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
 (eval-after-load "auto-complete"
-       '(add-to-list 'ac-modes 'slime-repl-mode))
+  '(add-to-list 'ac-modes 'slime-repl-mode))
 
 ;; Remove ^M when using *shell*
 ;; Add ansi-color to *shell* and maybe comint
@@ -178,29 +185,6 @@
   (interactive "nTransparency Value 0 - 100 opaque:")
   (set-frame-parameter (selected-frame) 'alpha value))
 
-;; Windows only configuration
-;;(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- ;;'(appmenu-mode t)
- ;;'(cua-mode t nil (cua-base))
- ;;'(emacsw32-max-frames f)
- ;;'(emacsw32-style-frame-title t)
- ;;'(hfyview-quick-print-in-files-menu t)
- ;;'(menuacc-mode t)
- ;;'(noprint-hide-print-in-menus t)
- ;;'(noprint-hide-ps-print-in-menus t)
- ;;'(ourcomments-ido-ctrl-tab t)
- ;;'(rebind-keys-mode t)
- ;;'(recentf-mode t)
- ;;'(sex-mode t)
- ;;'(tabkey2-mode t)
- ;;'(w32-meta-style (quote w32-lr))
- ;;'(setq w32-enable-synthesized-fonts t)
- ;;'(w32shell-shell (quote cmd)))
-
 (cond
  ((and (window-system) (string-match "aquamacs" (emacs-version)))
   (progn
@@ -214,14 +198,5 @@
     (set-face-font 'italic "-outline-Consolas-normal-italic-normal-mono-*-*-*-*-c-*-iso8859-1")
     (set-face-font 'bold  "-outline-Consolas-bold-normal-normal-mono-*-*-*-*-c-*-iso8859-1" )
     (set-face-font 'bold-italic "-outline-Consolas-bold-italic-normal-mono-*-*-*-*-c-*-iso8859-1"))))
-
-(add-to-list 'load-path "~/.emacs.d/vendor/gist/gist.el")
-(require 'gist)
-
-;;(global-set-key (kbd "C-M-a") 'move-beginning-of-line)
-
-(custom-set-variables
-    '(ispell-dictionary "american")
-    '(ispell-program-name "aspell.exe"))
 
 (cd "~")
